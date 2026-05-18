@@ -14,13 +14,13 @@
     }
 
     body {
-      height: 100vh;
+      min-height: 200vh; /* IMPORTANT pour permettre le scroll */
       display: flex;
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
       color: white;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .container {
@@ -58,12 +58,6 @@
       background: rgba(255,255,255,0.12);
       padding: 25px 15px;
       border-radius: 20px;
-      transition: 0.3s ease;
-    }
-
-    .box:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.18);
     }
 
     .number {
@@ -77,24 +71,10 @@
       font-size: 1rem;
       color: #cbd5e1;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    .message {
-      margin-top: 30px;
-      font-size: 2rem;
-      color: #4ade80;
-      display: none;
-      animation: pop 1s ease infinite alternate;
-    }
-
-    @keyframes pop {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
-    }
-
-    /* 🔥 BOUTON */
-    .btn-plus {
+    /* BOUTON PRINCIPAL */
+    .btn-meb {
       margin-top: 25px;
       background: black;
       color: white;
@@ -106,32 +86,21 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
-    .btn-plus:hover {
-      background: white;
-      color: black;
-      transform: scale(1.05);
-      border: 2px solid black;
     }
 
     .arrow {
       transition: transform 0.3s ease;
     }
 
-    .btn-plus:hover .arrow {
+    .btn-meb:hover .arrow {
       transform: translateX(8px);
     }
 
-    /* IMAGE */
     .img-anniv {
       width: 100%;
       max-width: 350px;
       margin-top: 20px;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
     /* OVERLAY */
@@ -171,21 +140,33 @@
       cursor: pointer;
     }
 
-    /* FEUX D’ARTIFICE */
-    .particle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: yellow;
+    /* 🔥 FLÈCHES SCROLL */
+    .scroll-btn {
+      position: fixed;
+      right: 20px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      animation: explode 1s ease-out forwards;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      background: white;
+      color: black;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: 0.3s;
     }
 
-    @keyframes explode {
-      to {
-        transform: translate(var(--x), var(--y));
-        opacity: 0;
-      }
+    .scroll-btn:hover {
+      transform: scale(1.1);
+    }
+
+    #upBtn {
+      bottom: 90px;
+    }
+
+    #downBtn {
+      bottom: 20px;
     }
 
   </style>
@@ -193,12 +174,15 @@
 
 <body>
 
+<!-- FLÈCHES -->
+<button class="scroll-btn" id="upBtn" onclick="scrollToTop()">⬆</button>
+<button class="scroll-btn" id="downBtn" onclick="scrollToBottom()">⬇</button>
+
 <div class="container">
 
   <h1>🎉 Anniversaire de MBOUSSI EDDY BRAYAN 🎂</h1>
   <p>Compte à rebours jusqu'au 23 Juin 2026</p>
 
-  <!-- 🔥 COMPTE À REBOURS RESTAURÉ -->
   <div class="countdown">
     <div class="box">
       <div class="number" id="days">0</div>
@@ -221,29 +205,35 @@
     </div>
   </div>
 
-  <!-- BOUTON -->
   <button class="btn-meb" onclick="openMagic()">
     Découvrir MEB <span class="arrow">→</span>
   </button>
 
-  <!-- IMAGE -->
   <img src="IMG_20260512_135012_862(1)(1).jpg" class="img-anniv">
 
 </div>
 
 <!-- OVERLAY -->
 <div id="overlay">
-  <h2>✨ ANNIVERSAIRE D'EDDY BRAYAN ✨</h2>
+  <h2>✨ ANNIVERSAIRE ✨</h2>
   <h3>🎆 23 JUIN 2026 🎆</h3>
-
   <button class="back-btn" onclick="closeMagic()">⬅ Retour</button>
 </div>
 
 <script>
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function scrollToBottom() {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+
+/* COMPTE À REBOURS */
 const targetDate = new Date("June 23, 2026 00:00:00").getTime();
 
-const countdown = setInterval(() => {
+setInterval(() => {
   const now = new Date().getTime();
   const distance = targetDate - now;
 
@@ -264,31 +254,11 @@ const countdown = setInterval(() => {
 /* OUVERTURE */
 function openMagic() {
   document.getElementById("overlay").style.display = "flex";
-  launchFireworks();
 }
 
 /* RETOUR */
 function closeMagic() {
   document.getElementById("overlay").style.display = "none";
-}
-
-/* FEUX D’ARTIFICE */
-function launchFireworks() {
-  for (let i = 0; i < 60; i++) {
-    let p = document.createElement("div");
-    p.className = "particle";
-    document.body.appendChild(p);
-
-    let x = (Math.random() - 0.5) * 800 + "px";
-    let y = (Math.random() - 0.5) * 800 + "px";
-
-    p.style.left = "50%";
-    p.style.top = "50%";
-    p.style.setProperty("--x", x);
-    p.style.setProperty("--y", y);
-
-    setTimeout(() => p.remove(), 1000);
-  }
 }
 
 </script>
