@@ -1,4 +1,68 @@
-.label {
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compte à rebours - Anniversaire</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html, body {
+      height: auto;
+      min-height: 100vh;
+      overflow-y: auto; /* ✅ ACTIVE LE SCROLL */
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 800px;
+      margin: 50px auto; /* IMPORTANT pour scroll */
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #facc15;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+      color: #e2e8f0;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.12);
+      padding: 25px 15px;
+      border-radius: 20px;
+    }
+
+    .number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .label {
       margin-top: 10px;
       font-size: 1rem;
       color: #cbd5e1;
