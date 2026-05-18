@@ -1,5 +1,3 @@
-# .COM
-ANNIVERSAIRE
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -89,24 +87,64 @@ ANNIVERSAIRE
     }
 
     @keyframes pop {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.08);
-      }
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
     }
 
     .footer {
-      margin-top: 25px;
+      margin-top: 20px;
       font-size: 0.95rem;
       color: #94a3b8;
     }
+
+    /* 🔥 BOUTON */
+    .btn-meb {
+      margin-top: 25px;
+      background: black;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn-meb:hover {
+      background: white;
+      color: black;
+      transform: scale(1.05);
+      border: 2px solid black;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-meb:hover .arrow {
+      transform: translateX(8px);
+    }
+
+    /* 🖼️ IMAGE */
+    .img-anniv {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
   </style>
 </head>
+
 <body>
 
   <div class="container">
+
     <h1>🎉 Anniversaire de MBOUSSI EDDY BRAYAN 🎂</h1>
     <p>Compte à rebours jusqu'au 23 Juin 2026</p>
 
@@ -132,6 +170,15 @@ ANNIVERSAIRE
       </div>
     </div>
 
+    <!-- 🔥 BOUTON -->
+    <button class="btn-meb">
+      Découvrir MEB
+      <span class="arrow">→</span>
+    </button>
+
+    <!-- 🖼️ IMAGE AJOUTÉE -->
+    <img src="IMG_20260512_135012_862(1)(1).jpg" alt="image anniversaire" class="img-anniv">
+
     <div class="message" id="message">
       🎊 Joyeux Anniversaire Brayan ! 🎊
     </div>
@@ -139,6 +186,7 @@ ANNIVERSAIRE
     <div class="footer">
       Créé spécialement pour ton anniversaire ❤️
     </div>
+
   </div>
 
   <script>
@@ -168,5 +216,3 @@ ANNIVERSAIRE
 
 </body>
 </html>
-
-![image URL](IMG_20260512_135012_862(1)(1).jpg)
