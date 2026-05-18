@@ -169,4 +169,4 @@ ANNIVERSAIRE
 </body>
 </html>
 
-![image alt](https://github.com/mboussieddybrayan6-art/.COM)
+![image URL](https://github.com/mboussieddybrayan6-art/.COM)
