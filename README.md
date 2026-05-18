@@ -36,12 +36,7 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
   color: #facc15;
-}
-
-p {
-  margin: 15px 0;
 }
 
 /* bouton */
@@ -54,8 +49,6 @@ p {
   border-radius: 30px;
   cursor: pointer;
   font-size: 18px;
-  display: inline-flex;
-  gap: 10px;
   transition: 0.3s;
 }
 
@@ -63,14 +56,6 @@ p {
   background: white;
   color: black;
   transform: scale(1.05);
-}
-
-.arrow {
-  transition: 0.3s;
-}
-
-.btn-meb:hover .arrow {
-  transform: translateX(8px);
 }
 
 /* IMAGE */
@@ -81,14 +66,14 @@ img {
   border-radius: 15px;
 }
 
-/* OVERLAY (apparition clic) */
+/* OVERLAY */
 #overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.92);
   display: none;
   justify-content: center;
   align-items: center;
@@ -97,11 +82,9 @@ img {
   text-align: center;
 }
 
-/* texte overlay */
 #overlay h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #facc15;
-  animation: zoom 1s ease infinite alternate;
 }
 
 #overlay h3 {
@@ -110,9 +93,22 @@ img {
   color: #4ade80;
 }
 
-@keyframes zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
+/* 🔙 BOUTON RETOUR */
+.back-btn {
+  margin-top: 30px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: white;
+  color: black;
 }
 
 /* FEUX D’ARTIFICE */
@@ -120,7 +116,7 @@ img {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: red;
+  background: yellow;
   border-radius: 50%;
   animation: explode 1s ease-out forwards;
 }
@@ -139,10 +135,9 @@ img {
 <div class="container">
 
 <h1>🎉 Anniversaire MEB 🎂</h1>
-<p>Compte à rebours spécial</p>
 
 <button class="btn-meb" onclick="openMagic()">
-  Découvrir MEB <span class="arrow">→</span>
+  Découvrir MEB →
 </button>
 
 <img src="IMG_20260512_135012_862(1)(1).jpg">
@@ -151,14 +146,22 @@ img {
 
 <!-- OVERLAY -->
 <div id="overlay">
-  <h2>✨ Joyeux Anniversaire ✨</h2>
+  <h2>✨ ANNIVERSAIRE D'EDDY BRAYAN ✨</h2>
   <h3>🎆 23 JUIN 2026 🎆</h3>
+
+  <!-- 🔙 BOUTON RETOUR -->
+  <button class="back-btn" onclick="closeMagic()">⬅ Retour</button>
 </div>
 
 <script>
+
 function openMagic() {
   document.getElementById("overlay").style.display = "flex";
   launchFireworks();
+}
+
+function closeMagic() {
+  document.getElementById("overlay").style.display = "none";
 }
 
 /* FEUX D’ARTIFICE */
@@ -181,6 +184,7 @@ function launchFireworks() {
     }, 1000);
   }
 }
+
 </script>
 
 </body>
