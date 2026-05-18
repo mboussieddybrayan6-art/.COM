@@ -170,3 +170,35 @@ ANNIVERSAIRE
 </html>
 
 ![image URL](IMG_20260512_135012_862.jpg)
+
+body{
+    margin:0;
+    background:black;
+    color:white;
+    overflow-y:auto;
+}
+
+.container{
+    min-height:200vh;
+    padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>MON SITE</h1>
+
+<p>Contenu...</p>
+
+<p>Beaucoup de contenu...</p>
+
+<p>Encore du contenu...</p>
+
+</div>
+
+</body>
+</html>
