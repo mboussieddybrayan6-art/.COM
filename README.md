@@ -94,7 +94,7 @@
     }
 
     /* 🔥 BOUTON */
-    .btn-meb {
+    .btn-plus {
       margin-top: 25px;
       background: black;
       color: white;
@@ -110,7 +110,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    .btn-meb:hover {
+    .btn-plus:hover {
       background: white;
       color: black;
       transform: scale(1.05);
@@ -121,7 +121,7 @@
       transition: transform 0.3s ease;
     }
 
-    .btn-meb:hover .arrow {
+    .btn-plus:hover .arrow {
       transform: translateX(8px);
     }
 
