@@ -1,218 +1,187 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Compte à rebours - Anniversaire</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MEB Anniversaire</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
 
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
-      color: white;
-      overflow: hidden;
-    }
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+  color: white;
+  overflow: hidden;
+}
 
-    .container {
-      text-align: center;
-      padding: 30px;
-      border-radius: 25px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-      width: 90%;
-      max-width: 800px;
-    }
+.container {
+  text-align: center;
+  padding: 30px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: #facc15;
-    }
+h1 {
+  font-size: 2.5rem;
+  color: #facc15;
+}
 
-    p {
-      margin-bottom: 30px;
-      font-size: 1.2rem;
-      color: #e2e8f0;
-    }
+p {
+  margin: 15px 0;
+}
 
-    .countdown {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 20px;
-    }
+/* bouton */
+.btn-meb {
+  margin-top: 20px;
+  background: black;
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  display: inline-flex;
+  gap: 10px;
+  transition: 0.3s;
+}
 
-    .box {
-      background: rgba(255,255,255,0.12);
-      padding: 25px 15px;
-      border-radius: 20px;
-      transition: 0.3s ease;
-    }
+.btn-meb:hover {
+  background: white;
+  color: black;
+  transform: scale(1.05);
+}
 
-    .box:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.18);
-    }
+.arrow {
+  transition: 0.3s;
+}
 
-    .number {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #38bdf8;
-    }
+.btn-meb:hover .arrow {
+  transform: translateX(8px);
+}
 
-    .label {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #cbd5e1;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+/* IMAGE */
+img {
+  width: 100%;
+  max-width: 350px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
 
-    .message {
-      margin-top: 30px;
-      font-size: 2rem;
-      color: #4ade80;
-      display: none;
-      animation: pop 1s ease infinite alternate;
-    }
+/* OVERLAY (apparition clic) */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+  text-align: center;
+}
 
-    @keyframes pop {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
-    }
+/* texte overlay */
+#overlay h2 {
+  font-size: 3rem;
+  color: #facc15;
+  animation: zoom 1s ease infinite alternate;
+}
 
-    .footer {
-      margin-top: 20px;
-      font-size: 0.95rem;
-      color: #94a3b8;
-    }
+#overlay h3 {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #4ade80;
+}
 
-    /* 🔥 BOUTON */
-    .btn-meb {
-      margin-top: 25px;
-      background: black;
-      color: white;
-      padding: 15px 25px;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 30px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+@keyframes zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
 
-    .btn-meb:hover {
-      background: white;
-      color: black;
-      transform: scale(1.05);
-      border: 2px solid black;
-    }
+/* FEUX D’ARTIFICE */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: red;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
 
-    .arrow {
-      transition: transform 0.3s ease;
-    }
-
-    .btn-meb:hover .arrow {
-      transform: translateX(8px);
-    }
-
-    /* 🖼️ IMAGE */
-    .img-anniv {
-      width: 100%;
-      max-width: 400px;
-      margin-top: 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-
-  </style>
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>🎉 Anniversaire de MBOUSSI EDDY BRAYAN 🎂</h1>
-    <p>Compte à rebours jusqu'au 23 Juin 2026</p>
+<h1>🎉 Anniversaire MEB 🎂</h1>
+<p>Compte à rebours spécial</p>
 
-    <div class="countdown">
-      <div class="box">
-        <div class="number" id="days">0</div>
-        <div class="label">Jours</div>
-      </div>
+<button class="btn-meb" onclick="openMagic()">
+  Découvrir MEB <span class="arrow">→</span>
+</button>
 
-      <div class="box">
-        <div class="number" id="hours">0</div>
-        <div class="label">Heures</div>
-      </div>
+<img src="IMG_20260512_135012_862(1)(1).jpg">
 
-      <div class="box">
-        <div class="number" id="minutes">0</div>
-        <div class="label">Minutes</div>
-      </div>
+</div>
 
-      <div class="box">
-        <div class="number" id="seconds">0</div>
-        <div class="label">Secondes</div>
-      </div>
-    </div>
+<!-- OVERLAY -->
+<div id="overlay">
+  <h2>✨ Découvrez la suite du nom : MEB ✨</h2>
+  <h3>🎆 23 JUIN 2026 🎆</h3>
+</div>
 
-    <!-- 🔥 BOUTON -->
-    <button class="btn-meb">
-      Découvrir MEB
-      <span class="arrow">→</span>
-    </button>
+<script>
+function openMagic() {
+  document.getElementById("overlay").style.display = "flex";
+  launchFireworks();
+}
 
-    <!-- 🖼️ IMAGE AJOUTÉE -->
-    <img src="IMG_20260512_135012_862(1)(1).jpg" alt="image anniversaire" class="img-anniv">
+/* FEUX D’ARTIFICE */
+function launchFireworks() {
+  for (let i = 0; i < 60; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    document.body.appendChild(p);
 
-    <div class="message" id="message">
-      🎊 Joyeux Anniversaire Brayan ! 🎊
-    </div>
+    let x = (Math.random() - 0.5) * 800 + "px";
+    let y = (Math.random() - 0.5) * 800 + "px";
 
-    <div class="footer">
-      Créé spécialement pour ton anniversaire ❤️
-    </div>
+    p.style.left = "50%";
+    p.style.top = "50%";
+    p.style.setProperty("--x", x);
+    p.style.setProperty("--y", y);
 
-  </div>
-
-  <script>
-    const targetDate = new Date("June 23, 2026 00:00:00").getTime();
-
-    const countdown = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerText = days;
-      document.getElementById("hours").innerText = hours;
-      document.getElementById("minutes").innerText = minutes;
-      document.getElementById("seconds").innerText = seconds;
-
-      if (distance < 0) {
-        clearInterval(countdown);
-        document.querySelector(".countdown").style.display = "none";
-        document.getElementById("message").style.display = "block";
-      }
+    setTimeout(() => {
+      p.remove();
     }, 1000);
-  </script>
+  }
+}
+</script>
 
 </body>
 </html>
