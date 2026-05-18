@@ -151,7 +151,7 @@ img {
 
 <!-- OVERLAY -->
 <div id="overlay">
-  <h2>✨ Découvrez la suite du nom : MEB ✨</h2>
+  <h2>✨ Joyeux Anniversaire ✨</h2>
   <h3>🎆 23 JUIN 2026 🎆</h3>
 </div>
 
